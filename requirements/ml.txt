@@ -1,0 +1,32 @@
+# AutoDL ML profile, Python 3.12, Linux x86_64; versions observed 2026-10-22.
+# Full training/inference used this combination; clean-profile installation must
+# still pass the repo preflight. Never install this into the existing running env.
+# Official CUDA 12.8 wheels, CPython 3.12 / Linux x86_64 / glibc >= 2.28.
+# Keep their index scoped to these wheels so it cannot shadow generic PyPI pins.
+torch @ https://download-r2.pytorch.org/whl/cu128/torch-2.11.0%2Bcu128-cp312-cp312-manylinux_2_28_x86_64.whl#sha256=d252cf975fb18c94a85336323ad425f473df56dab35a44b00399bd70c7a3b997
+torchvision @ https://download-r2.pytorch.org/whl/cu128/torchvision-0.26.0%2Bcu128-cp312-cp312-manylinux_2_28_x86_64.whl#sha256=ccf26b4b659cfce6f2208cb8326071d51c70219a34856dfdf468d1e19af52c0d
+# [training] would additionally pull TorchCodec. The explicit data stack below
+# uses PyAV, matching the running environment (TorchCodec was not installed).
+lerobot[pi]==0.6.1
+transformers==5.5.4
+accelerate==1.15.0
+safetensors==0.8.0
+huggingface-hub==1.33.0
+tokenizers==0.22.2
+numpy==2.2.6
+opencv-python-headless==4.13.0.92
+Pillow==12.3.0
+datasets==4.8.5
+pandas==2.3.3
+pyarrow==26.0.0
+av==15.1.0
+wandb==0.27.2
+sentencepiece==0.2.2
+protobuf==7.36.2
+draccus==0.11.6
+einops==0.8.2
+scipy==1.18.1
+jsonlines==4.0.0
+packaging==25.0
+imageio==2.38.1
+imageio-ffmpeg==0.6.0

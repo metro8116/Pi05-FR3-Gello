@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "task": "Put the avocado in the basket.",
+  "model": {
+    "host": "127.0.0.1",
+    "port": 18000,
+    "connect_timeout_s": 5.0,
+    "request_timeout_s": 1.0,
+    "expected_fps": 15
+  },
+  "bridge": {
+    "host": "127.0.0.1",
+    "port": 5566,
+    "timeout_s": 0.4,
+    "state_topic": "/franka/joint_states",
+    "gripper_state_topic": "/franka_gripper/joint_states",
+    "gripper_move_action": "/franka_gripper/move",
+    "controller_name": "joint_impedance_controller",
+    "controller_manager": "/controller_manager",
+    "command_topic": "/pi05/absolute_joint_targets"
+  },
+  "cameras": {
+    "serials": [
+      "233522074047",
+      "405622074065"
+    ],
+    "width": 640,
+    "height": 480,
+    "capture_fps": 30,
+    "jpeg_quality": 85,
+    "max_age_s": 0.2,
+    "max_skew_s": 0.08
+  },
+  "execution": {
+    "fps": 15,
+    "interpolation_hz": 100,
+    "prefix_steps": 6,
+    "max_observation_age_s": 1.0,
+    "heartbeat_timeout_s": 0.5,
+    "action_timeout_s": 0.8,
+    "state_max_age_s": 0.2,
+    "max_start_delta_rad": 0.4,
+    "max_waypoint_delta_rad": 0.15,
+    "max_tracking_error_rad": 0.25,
+    "max_joint_velocity_rad_s": 0.35,
+    "max_joint_acceleration_rad_s2": 0.8,
+    "joint_lower_rad": [
+      -2.7437,
+      -1.7837,
+      -2.9007,
+      -3.0421,
+      -2.8065,
+      0.5445,
+      -3.0159
+    ],
+    "joint_upper_rad": [
+      2.7437,
+      1.7837,
+      2.9007,
+      -0.1518,
+      2.8065,
+      4.5169,
+      3.0159
+    ],
+    "width_min_m": 0.0,
+    "width_max_m": 0.08,
+    "gripper_speed_m_s": 0.04,
+    "gripper_deadband_m": 0.002,
+    "gripper_action_timeout_s": 5.0
+  },
+  "robot": {
+    "ip": "172.16.0.2",
+    "arm_id": "fr3"
+  },
+  "recording": {
+    "directory": "recordings",
+    "queue_size": 64
+  }
+}

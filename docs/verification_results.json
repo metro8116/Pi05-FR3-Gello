@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-22",
+  "scope": "Repository consolidation and automatic local dual-camera deployment videos",
+  "hardware_started": false,
+  "training_started_or_interrupted": false,
+  "old_environments_installed_or_modified": false,
+  "original_training_source_hashes_unchanged": 8,
+  "root_cpu_suite": {
+    "profile": "Initial migration: existing converter Python, LeRobot 0.4.4, CUDA disabled",
+    "tests": 77,
+    "passed": 68,
+    "skipped": 9,
+    "failed": 0,
+    "skip_reasons": {
+      "real_dataset_not_supplied": 6,
+      "requires_actual_lerobot_0_6_1_remapper": 2,
+      "camera_sdk_not_in_converter_profile": 1
+    },
+    "includes": [
+      "18 raw conversion validation cases",
+      "12-frame two-camera schema-2 to v3.0 export and video readback",
+      "zero eligible episodes returns failure without output writes",
+      "relocated repository with spaces and interpreter/profile dispatch",
+      "official trainer and native strict-resume loader CPU regressions"
+    ]
+  },
+  "new_deployment_cpu_suite": {
+    "tests": 252,
+    "passed": 239,
+    "skipped": 13,
+    "failed": 0,
+    "skip_reasons": {
+      "torch_safetensors_not_in_selected_python": 11,
+      "tokenizers_processor_dependencies_missing": 1,
+      "real_video_dependencies_missing_in_default_python": 1
+    }
+  },
+  "existing_deployment_cpu_suite": {
+    "tests": 248,
+    "passed": 235,
+    "skipped": 13,
+    "failed": 0
+  },
+  "recording_suite_in_existing_camera_python": {
+    "per_repository_tests": 17,
+    "both_repositories_passed": true,
+    "skipped": 0,
+    "includes_actual_synthetic_dual_h264_mp4_encoding_and_opencv_readback": true,
+    "physical_cameras_used": false
+  },
+  "capture_headless_contract": {
+    "passed": true,
+    "reported_assertion_groups": 11,
+    "physical_devices_used": false
+  },
+  "other_checks": [
+    "Python AST and shell syntax",
+    "Docker Compose configuration parsing only",
+    "Documentation local links",
+    "Git ignores data, environments, weights, videos and private config",
+    "Identical execution_video module and module tests in both repositories",
+    "Matching robot/execution defaults across old and new deployment configs"
+  ],
+  "not_executed": [
+    "Fresh ML/GPU profile installation",
+    "New Docker image build or ROS/C++ compilation",
+    "GPU PI05 training, resume or inference",
+    "Deployment SSH tunnel or FR3/real camera motion test",
+    "GitHub repository creation or upload"
+  ],
+  "license_note": "Capture upstream did not provide an explicit root license; see LICENSE.md before public redistribution.",
+  "subsequent_environment_upgrade_report": "converter_environment_061_verification.json"
+}

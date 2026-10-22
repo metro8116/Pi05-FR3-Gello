@@ -1,0 +1,27 @@
+# Troubleshooting
+
+English · [简体中文](troubleshooting_zh.md)
+
+**Conversion reports missing numpy/opencv/h5py, or selects 0 frames.** The Python selected by your shell may not be the converter environment. Check `PI05_CONVERTER_PYTHON` with `./run.sh doctor`, then run `./run.sh validate`. Convert only after the dependencies are available and valid records have been selected. Do not temporarily install converter dependencies into an ML environment that is running training.
+
+**The base model config.json cannot be found.** `PI05_BASE_MODEL` must point to the actual snapshot directory containing both config.json and a single model.safetensors file. The outer `models--lerobot--pi05_base` directory is not the model directory. The tokenizer must already be available in the local cache, or have a complete local vocabulary and configuration.
+
+**Resuming training reports a remapped key conflict.** Native checkpoints must not pass through the base-weight key migration. Use this repository's `./run.sh resume --resume-from ...`, rather than the pi05_base initialization path, for trained weights. Include the matching training_state and processors alongside the checkpoint. The fix does not rewrite an existing checkpoint or reset the optimizer.
+
+**UserStopped / FCI is unavailable.** On site, check the physical stop, device unlocking, and Franka Desk mode. Follow the device procedure to select Execution/Activate FCI; external joint control does not run in Programming mode. End the software session normally before using Programming mode to reposition the arm, then re-enable control and check the scene. Large changes to the initial pose can shift the input distribution away from training. The software does not automatically convert actions into relative trajectories.
+
+**A serial device or camera is missing.** Check USB power, bandwidth, udev rules, and permissions. Use by-id for GELLO and specify serial numbers when multiple devices are present. Do not swap camera_1/2 or run two camera applications at once. `collect --no-camera` is for debugging only; it does not produce the demonstrations required for this two-camera training workflow.
+
+**Move reports Command failed when the gripper contacts an object.** The target width may be smaller than the width at object contact. Failing to reach a target and rejecting a goal are different events. The collection code and converter preserve raw execution diagnostics and accept only explicitly recognized results. Use the video to assess whether the object is held and the task is complete. Dropped objects, hardware damage, and actual communication faults must not be treated as success.
+
+**You want to reduce speed to set the gripping force to 0 N.** The Move interface has no force parameter. Speed, target width, and actual contact force are different quantities, and this model does not predict force. The current interface is Move at 0.04 m/s; it is not described as 0/5 N. If a finger is damaged, stop using it and inspect it according to the hardware procedure. The tools do not automatically remove a maintenance lock.
+
+**Deployment stops above the basket.** Read the first specific failure in the client and ROS logs under the deployment session's logs/ directory: expired network/image observations, prediction deviation, tracking error, gripper Stop/Move, or device state. Distinguish server processing time, SSH round-trip latency, and local execution before changing anything. Do not disable watchdogs or limits to hide the failure. The current workflow uses sequential chunked inference, not RTC.
+
+**The gripper has not finished after you press Stop.** Software Stop includes confirmation from the device's native stop operation. During the transition, the arm decelerates within its configured limits and holds. Successor actions are released only after explicit confirmation, and the session's control lock remains held until cleanup completes. If stop confirmation fails, do not open another control window in parallel. A fault may leave the GUI open for diagnostics; close it before restarting. Use the physical stop on site in an emergency.
+
+**collect --check passes, but the workflow still does not run.** It checks Python imports only, not cameras, the realtime kernel, the ROS install, FCI, or the scene. A new Docker image requires ros-image / ros-up / ros-build first, and deployment also requires prepare. Verify the role-specific environment, then follow the tutorial checks in order.
+
+**Why does the new repository contain no data or weights?** It is a source repository intended for publication. Data, checkpoints, environments, logs, and private configuration are ignored. Existing assets can remain at their original locations and be referenced explicitly. The operator initiates backups and uploads; the tutorials do not automatically move an active training directory.
+
+**ros-image reports GnuTLS recv error (-110).** A TLS connection was interrupted while downloading GitHub source. The updated entry point uses source archives pinned to commits, SHA256 verification, and a host cache. After updating, rerun `./run.sh ros-image`; do not reinstall Python environments or clear the Docker cache. After both the source archives and the common submodule have been prepared successfully, the container unpacks and builds them offline. apt still requires working network access. The image now uses an explicit hardware dependency list instead of rosdep's online index.

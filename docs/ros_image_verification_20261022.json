@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-22",
+  "recorded_at_utc": "2026-10-22T06:07:27.770622+00:00",
+  "purpose": "Recover interrupted GitHub clone and verify ROS image without hardware",
+  "image": {
+    "tag": "pi05-fr3-gello:humble",
+    "id": "sha256:fbb3d436f260c0367fefa84fd26d1bb48420c970905c0cead620e58c71b2bf57",
+    "created": "2026-10-22T14:05:37.452222214+08:00",
+    "bytes": 2155180703,
+    "build_exit_code": 0
+  },
+  "sources": [
+    {
+      "name": "libfranka",
+      "commit": "155ddac80565975b58f53eb2feeb85b07a6b9e13",
+      "filename": "libfranka-0.15.0.tar.gz",
+      "sha256": "e66f7213c187e8f30e2658cf0df4d87b7702af0f73bb465d7aa37af8885bda7d",
+      "bytes": 161438
+    },
+    {
+      "name": "libfranka-common",
+      "commit": "cd38d0ec300b7e6864407d85d1e88e2fba31ccd5",
+      "filename": "libfranka-common-cd38d0ec300b7e6864407d85d1e88e2fba31ccd5.tar.gz",
+      "sha256": "0696297f235dc63c014232acde602aa9ad59bf8630d5b9901b32ac79f4d2dee2",
+      "bytes": 10241
+    },
+    {
+      "name": "franka_ros2",
+      "commit": "dffd70ef838656b5ded3b8e460cc58d699d929f8",
+      "filename": "franka_ros2-v2.0.4.tar.gz",
+      "sha256": "8b08bfdcff7a1095225575cae5e5efd3b28a9f9ca5928cfbc001f0e2b78f11f7",
+      "bytes": 334444
+    },
+    {
+      "name": "franka_description",
+      "commit": "4b8948e061c2ef8b2ea15d658cf35981c683f864",
+      "filename": "franka_description-1.0.2.tar.gz",
+      "sha256": "0fd1ed7903095f71c62a26dd76142ce1475a22f7db1fedf3556dffb6cf261c5a",
+      "bytes": 36198043
+    }
+  ],
+  "source_preparation_tests": {
+    "python": "/usr/bin/python3 (3.8)",
+    "passed": 17,
+    "failed": 0
+  },
+  "offline_archive_verification": "passed",
+  "shell_syntax_and_compose_config": "passed",
+  "upstream_compilation": {
+    "libfranka": "0.15.0",
+    "franka_ros2_ref": "v2.0.4",
+    "packages": [
+      "franka_msgs",
+      "franka_description",
+      "franka_hardware",
+      "franka_gripper",
+      "franka_semantic_components",
+      "franka_robot_state_broadcaster"
+    ],
+    "result": "passed"
+  },
+  "isolated_image_smoke": {
+    "network": "none",
+    "device_mounts": false,
+    "privileged": false,
+    "package_prefixes_checked": 8,
+    "dynamic_link_targets_checked": 7,
+    "missing_dynamic_libraries": 0,
+    "fr3_urdf_present": true,
+    "result": "passed"
+  },
+  "isolated_custom_overlay_compilation": {
+    "network": "none",
+    "source_mount": "read_only",
+    "device_mounts": false,
+    "privileged": false,
+    "packages": [
+      "franka_gello_state_publisher",
+      "franka_fr3_arm_controllers",
+      "franka_gripper_manager",
+      "pi05_gripper_driver"
+    ],
+    "build_testing": true,
+    "build_exit_code": 0,
+    "package_prefixes_checked": 4,
+    "runtime_tests_performed": false,
+    "temporary_container_removed": true,
+    "persistent_host_overlay_built": false
+  },
+  "ros_nodes_or_hardware_started": false,
+  "robot_camera_or_serial_accessed": false,
+  "old_projects_environments_data_checkpoints_and_training_unchanged": true,
+  "build_log_local": "/tmp/pi05-fr3-gello-ros-image-final-20261022.log",
+  "custom_compile_log_local": "/tmp/pi05-fr3-gello-overlay-check-20261022.log"
+}

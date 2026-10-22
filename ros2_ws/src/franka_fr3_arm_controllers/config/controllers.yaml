@@ -1,0 +1,38 @@
+/**:
+  controller_manager:
+    ros__parameters:
+      update_rate: 1000  # Hz
+
+      joint_impedance_controller:
+        type: franka_fr3_arm_controllers/JointImpedanceController
+
+      joint_state_broadcaster:
+        type: joint_state_broadcaster/JointStateBroadcaster
+
+      franka_robot_state_broadcaster:
+        type: franka_robot_state_broadcaster/FrankaRobotStateBroadcaster
+
+/**:
+  joint_impedance_controller:
+    ros__parameters:
+      # Capture the robot and GELLO joint positions at controller activation and
+      # follow only GELLO deltas. This prevents the arm from jumping to GELLO's
+      # absolute startup pose when the two devices are not aligned.
+      relative_start: true
+      k_alpha: 0.1
+      k_gains:
+        - 120.0
+        - 120.0
+        - 120.0
+        - 100.0
+        - 60.0
+        - 40.0
+        - 20.0
+      d_gains:
+        - 18.0
+        - 18.0
+        - 18.0
+        - 14.0
+        - 10.0
+        - 8.0
+        - 5.0

@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pi05-fr3-gello"
+version = "0.1.0"
+description = "GELLO demonstration collection, LeRobot v3 conversion and PI05 deployment for Franka FR3"
+requires-python = ">=3.10"
+# Native libraries differ across the robot, converter and GPU profiles.
+# Install the selected requirements/*.txt before installing this package --no-deps.
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+fr3-pi05-train = "fr3_pi05.cli:main"
+fr3-pi05-check = "fr3_pi05.doctor:main"

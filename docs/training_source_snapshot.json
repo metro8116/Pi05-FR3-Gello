@@ -1,0 +1,13 @@
+{
+  "source": "existing Pi05-train after native-resume loader fix",
+  "files": {
+    "train.py": "8990204c9af8e19392677c7764ab0217552ac91f15c5a25072a7bae01191ee3b",
+    "check_env.py": "c3bfe43745cfb6e702cc6958d6654a5204d012ac22a41f63fe1d5c25f6a0d8d1",
+    "src/fr3_pi05/__init__.py": "c529f03469345e080ebf127ba272c3f4d57e8fe3c20a8f3588b87e9fd17b1546",
+    "src/fr3_pi05/cli.py": "4551882dd0ef36d4ba987763a2c0157dc1a8f7456a2db41b9eddeb5617a555d5",
+    "src/fr3_pi05/data.py": "10a560d84843ee235a12cb7b371323a9de68efc8ab7c900c40fc94feae19fe3d",
+    "src/fr3_pi05/doctor.py": "b65e3ce24359d9ae34cd4a2d0a392d9271aa30243154308005e78b64a2f062d8",
+    "src/fr3_pi05/native.py": "e8f0542968f66c75035aaf8569a859f9103b8ebc941678ef719c94fbb07ff444",
+    "src/fr3_pi05/runtime.py": "5601e58864cb43a73c7694f35ced5e637ffa9a494652be923184b374e803e1aa"
+  }
+}

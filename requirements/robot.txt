@@ -1,0 +1,11 @@
+# Workstation host, Python 3.10, Linux x86_64. Separate from converter/ML.
+# Critical versions observed in the working take_data environment, 2026-10-22.
+# Tkinter, Docker and ROS2 are OS/container dependencies, not pip packages.
+numpy==2.2.6
+opencv-python==4.13.0.92
+h5py==3.16.0
+Pillow==12.2.0
+pyrealsense2==2.58.1.10581
+PyYAML==6.0.3
+# Bundled FFmpeg for automatic deployment videos; no system encoder required.
+imageio-ffmpeg==0.6.0

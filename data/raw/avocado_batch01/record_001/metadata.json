@@ -1,0 +1,167 @@
+{
+  "schema_version": 2,
+  "capture_contract": "fr3_joint_position_v1",
+  "final_status_authority": "metadata.json",
+  "session": "record_001",
+  "task": "Put the avocado in the basket.",
+  "outcome": "success",
+  "observation_state_features": [
+    "fr3_joint1",
+    "fr3_joint2",
+    "fr3_joint3",
+    "fr3_joint4",
+    "fr3_joint5",
+    "fr3_joint6",
+    "fr3_joint7",
+    "gripper_width_m"
+  ],
+  "action_features": [
+    "fr3_joint1",
+    "fr3_joint2",
+    "fr3_joint3",
+    "fr3_joint4",
+    "fr3_joint5",
+    "fr3_joint6",
+    "fr3_joint7",
+    "gripper_target_width_m"
+  ],
+  "observation_state_units": [
+    "rad",
+    "rad",
+    "rad",
+    "rad",
+    "rad",
+    "rad",
+    "rad",
+    "m"
+  ],
+  "action_units": [
+    "rad",
+    "rad",
+    "rad",
+    "rad",
+    "rad",
+    "rad",
+    "rad",
+    "m"
+  ],
+  "control_units": {
+    "q_measured": "rad",
+    "dq_measured": "rad/s",
+    "q_target": "rad",
+    "tau_command": "Nm",
+    "gello_q": "rad",
+    "robot_start_q": "rad",
+    "gello_start_q": "rad"
+  },
+  "action_semantics": "absolute_FR3_joint_position_targets_and_last_accepted_gripper_width",
+  "gripper_execution_policy": "accepted_move_kfail_with_raw_diagnostics_v1",
+  "gripper_execution_diagnostics": [],
+  "gripper_control_profile": {
+    "schema_version": 1,
+    "control_policy": "move_width_v1",
+    "policy_config": null
+  },
+  "clock_domain": "ROS_system_epoch_seconds_and_nanoseconds",
+  "causal_alignment": {
+    "arm_max_age_s": 0.2,
+    "gripper_measurement_max_age_s": 0.5,
+    "gripper_heartbeat_max_age_s": 0.5,
+    "image_reference": "earliest_valid_system_or_global_exposure_else_host_receipt",
+    "host_fallback_limitation": "past_before_host_receipt_does_not_prove_past_before_exposure"
+  },
+  "controller": {
+    "activation_id": "1792567421895291982",
+    "relative_start": true,
+    "robot_start_q": [
+      0.06844215054688689,
+      -0.28719709757156675,
+      -0.14945321797110692,
+      -2.5510688785832363,
+      -0.0648491614049002,
+      2.2269133751013626,
+      0.7880926623610223
+    ],
+    "gello_start_q": [
+      1.4332678465098,
+      0.09395550985146439,
+      1.3580844325777364,
+      -1.3652164625851133,
+      0.04178742671493074,
+      1.524789422767452,
+      -0.42807976125875324
+    ],
+    "joint_names": [
+      "fr3_joint1",
+      "fr3_joint2",
+      "fr3_joint3",
+      "fr3_joint4",
+      "fr3_joint5",
+      "fr3_joint6",
+      "fr3_joint7"
+    ],
+    "sequence": 43185,
+    "stamp_ns": 1792567465079811705
+  },
+  "gripper_contract": {
+    "max_width_m": 0.08,
+    "observation": "sum_of_two_measured_finger_positions_m",
+    "action": "last_accepted_target_width_m",
+    "heartbeat_hz": 10
+  },
+  "controller_config": {
+    "path": "/home/zezhi/gello_software/ros2/src/franka_fr3_arm_controllers/config/controllers.yaml",
+    "source": "workspace_configuration_not_runtime_parameter_readback",
+    "parameters": {
+      "relative_start": true,
+      "k_gains": [
+        120.0,
+        120.0,
+        120.0,
+        100.0,
+        60.0,
+        40.0,
+        20.0
+      ],
+      "d_gains": [
+        18.0,
+        18.0,
+        18.0,
+        14.0,
+        10.0,
+        8.0,
+        5.0
+      ],
+      "k_alpha": 0.1
+    }
+  },
+  "started_at": "2026-10-21T15:24:25.117694",
+  "color_resolution": [
+    640,
+    480
+  ],
+  "capture_fps": 30,
+  "record_fps": 15.0,
+  "cameras_disabled": false,
+  "cameras": [
+    {
+      "camera_index": 1,
+      "serial": "233522074047",
+      "video_path": "video/camera_1_20261021_152425.mp4",
+      "frames_directory": "video/camera_1_20261021_152425_frames"
+    },
+    {
+      "camera_index": 2,
+      "serial": "405622074065",
+      "video_path": "video/camera_2_20261021_152425.mp4",
+      "frames_directory": "video/camera_2_20261021_152425_frames"
+    }
+  ],
+  "status": "complete",
+  "errors": [],
+  "frame_count": 304,
+  "action_count": 304,
+  "image_time_bases": [
+    "earliest_camera_exposure_system_epoch"
+  ]
+}

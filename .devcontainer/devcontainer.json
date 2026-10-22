@@ -1,0 +1,10 @@
+{
+  "name": "Pi05 FR3 GELLO ROS2 Humble",
+  "dockerComposeFile": "../docker/compose.yaml",
+  "service": "ros2",
+  "workspaceFolder": "/workspace/repo",
+  "shutdownAction": "none",
+  "customizations": {
+    "vscode": {"extensions": ["ms-python.python", "ms-iot.vscode-ros", "ms-vscode.cpptools"]}
+  }
+}

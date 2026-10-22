@@ -1,0 +1,11 @@
+robot1:
+  namespace: ""
+  control_mode: move
+  # Move commands width and speed only; it does NOT provide a force limit.
+  # Raised from 0.02 to 0.04 m/s at the user's request. The earlier operator
+  # contact-force check does not constitute an independent test at this speed.
+  gripper_move_speed: 0.04
+  command_deadband_percent: 0.02
+  max_width_fallback: 0.08
+  invert_gripper_command: false
+  home_on_startup: false

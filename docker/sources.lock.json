@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "description": "Pinned upstream source archives. accepted_sha256 also permits audited clean local Git archives at the same commit. libfranka common is always supplied separately.",
+  "sources": [
+    {
+      "name": "libfranka",
+      "version": "0.15.0",
+      "repository": "frankarobotics/libfranka",
+      "commit": "155ddac80565975b58f53eb2feeb85b07a6b9e13",
+      "filename": "libfranka-0.15.0.tar.gz",
+      "url": "https://codeload.github.com/frankarobotics/libfranka/tar.gz/155ddac80565975b58f53eb2feeb85b07a6b9e13",
+      "sha256": "e66f7213c187e8f30e2658cf0df4d87b7702af0f73bb465d7aa37af8885bda7d",
+      "accepted_sha256": ["0d86721468c5ed24490aa0aa8b63d2613bf34a2514adc8c3a49114eb279c84fd"],
+      "archive_roots": ["libfranka-155ddac80565975b58f53eb2feeb85b07a6b9e13", "libfranka"],
+      "max_bytes": 33554432,
+      "submodules": {"common": "cd38d0ec300b7e6864407d85d1e88e2fba31ccd5"}
+    },
+    {
+      "name": "libfranka-common",
+      "version": "libfranka-0.15.0-gitlink",
+      "repository": "frankarobotics/libfranka-common",
+      "commit": "cd38d0ec300b7e6864407d85d1e88e2fba31ccd5",
+      "filename": "libfranka-common-cd38d0ec300b7e6864407d85d1e88e2fba31ccd5.tar.gz",
+      "url": "https://codeload.github.com/frankarobotics/libfranka-common/tar.gz/cd38d0ec300b7e6864407d85d1e88e2fba31ccd5",
+      "sha256": "0696297f235dc63c014232acde602aa9ad59bf8630d5b9901b32ac79f4d2dee2",
+      "accepted_sha256": [],
+      "archive_roots": ["libfranka-common-cd38d0ec300b7e6864407d85d1e88e2fba31ccd5"],
+      "max_bytes": 1048576
+    },
+    {
+      "name": "franka_ros2",
+      "version": "v2.0.4",
+      "repository": "frankarobotics/franka_ros2",
+      "commit": "dffd70ef838656b5ded3b8e460cc58d699d929f8",
+      "filename": "franka_ros2-v2.0.4.tar.gz",
+      "url": "https://codeload.github.com/frankarobotics/franka_ros2/tar.gz/dffd70ef838656b5ded3b8e460cc58d699d929f8",
+      "sha256": "8b08bfdcff7a1095225575cae5e5efd3b28a9f9ca5928cfbc001f0e2b78f11f7",
+      "accepted_sha256": ["d24b3fdacc4faad2a59adfd7afce769376f0353e570d3cf96073319882bb071e"],
+      "archive_roots": ["franka_ros2-dffd70ef838656b5ded3b8e460cc58d699d929f8", "franka_ros2"],
+      "max_bytes": 16777216
+    },
+    {
+      "name": "franka_description",
+      "version": "1.0.2",
+      "repository": "frankarobotics/franka_description",
+      "commit": "4b8948e061c2ef8b2ea15d658cf35981c683f864",
+      "filename": "franka_description-1.0.2.tar.gz",
+      "url": "https://codeload.github.com/frankarobotics/franka_description/tar.gz/4b8948e061c2ef8b2ea15d658cf35981c683f864",
+      "sha256": "0fd1ed7903095f71c62a26dd76142ce1475a22f7db1fedf3556dffb6cf261c5a",
+      "accepted_sha256": ["d9995afc6b716bd688bb6e2beeef672c5eef009d52738b97b4ea954cb78e7e1b"],
+      "archive_roots": ["franka_description-4b8948e061c2ef8b2ea15d658cf35981c683f864", "franka_description"],
+      "max_bytes": 134217728
+    }
+  ]
+}

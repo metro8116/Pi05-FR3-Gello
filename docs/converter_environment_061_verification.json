@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-22",
+  "purpose": "Fresh setup repair and converter upgrade to LeRobot 0.6.1",
+  "removed_formal_environments": [".venv-robot", ".venv-converter"],
+  "existing_projects_environments_data_and_training_unchanged": true,
+  "converter": {
+    "python": "3.12.13",
+    "lerobot": "0.6.1",
+    "torch": "2.11.0+cpu",
+    "numpy": "2.2.6",
+    "locked_dependencies": 65,
+    "fresh_temporary_install": "passed",
+    "editable_project_install": "passed",
+    "uv_pip_check": "passed",
+    "converter_tests": {"passed": 4, "skipped": 0, "failed": 0},
+    "raw_validation_cases": 18,
+    "synthetic_avocado_episode_frames": 12,
+    "dataset_format": "v3.0",
+    "two_camera_video_decode": "passed",
+    "training_data_only_preflight": "passed",
+    "fifty_step_action_chunk_end_padding": "passed",
+    "raw_source_fingerprints_unchanged": true
+  },
+  "robot": {
+    "python": "3.10.0",
+    "locked_dependencies": 7,
+    "fresh_temporary_install": "passed",
+    "editable_project_install": "passed",
+    "uv_pip_check": "passed",
+    "collect_check_imports": "passed",
+    "physical_cameras_or_robot_opened": false
+  },
+  "setup_entrypoint_tests": {"passed": 6, "failed": 0},
+  "ml": {
+    "full_dependency_resolution": "passed",
+    "locked_dependencies": 108,
+    "pytorch_index_shadowing_fixed": true,
+    "gpu_install_or_training_performed": false
+  },
+  "formal_environments_left_absent_for_user_to_create": true,
+  "temporary_validation_environments_removed": true,
+  "ros_image_build_or_robot_activation_performed": false
+}

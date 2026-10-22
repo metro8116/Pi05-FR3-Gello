@@ -1,0 +1,25 @@
+robot1:
+  namespace: ""
+  # Disabled again: the user reports excessive grip despite the 5 N command.
+  # Keep the last tested command for diagnosis; do not interpret it as measured
+  # physical force or enable before the actual contact/holding force is checked.
+  control_mode: disabled
+  grasp_action_topic: franka_gripper/grasp
+  # Official Hand manual R50010/1.2/EN specifies 30..70 N adjustable continuous
+  # force. This 5 N configuration relies on the user's model/firmware-specific
+  # manufacturer confirmation; software bounds do not measure physical force.
+  grasp_force_n: 5.0
+  gripper_move_speed: 0.02
+  # Explicit operator-authorized command bounds; never clamp, increase, or retry.
+  grasp_force_limit_n: 5.0
+  command_speed_limit_m_s: 0.02
+  force_configuration_verified: false
+  grasp_epsilon_inner_m: 0.005
+  grasp_epsilon_outer_m: 0.08
+  close_trigger_width_m: 0.03
+  release_trigger_width_m: 0.06
+  measurement_max_age_s: 0.5
+  command_deadband_percent: 0.02
+  max_width_fallback: 0.08
+  invert_gripper_command: false
+  home_on_startup: false

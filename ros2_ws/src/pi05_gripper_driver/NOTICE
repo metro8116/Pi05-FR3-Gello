@@ -1,0 +1,15 @@
+pi05_gripper_driver contains modified Franka ROS2 gripper action-server sources.
+Original copyright: Copyright (c) 2023 Franka Robotics GmbH.
+Original license: Apache License, Version 2.0 (included in LICENSE).
+Original source: frankarobotics/franka_ros2 tag v2.0.2:
+  franka_gripper/include/franka_gripper/gripper_action_server.hpp
+  franka_gripper/src/gripper_action_server.cpp
+https://github.com/frankarobotics/franka_ros2/tree/v2.0.2/franka_gripper
+
+Local changes (2026-10-22): unique package/namespace, independent Stop callback
+group with a two-thread executor, injectable backend for robot-free tests, and
+no state publication after failed native reads. Native action commands, units,
+parameters, result mapping, and state fields are retained.
+
+This package installs only to the PI05 deployment overlay. It does not replace
+the system franka_gripper package or the GELLO collection installation.

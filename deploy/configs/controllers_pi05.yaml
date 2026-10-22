@@ -1,0 +1,17 @@
+/controller_manager:
+  ros__parameters:
+    update_rate: 1000
+    joint_impedance_controller:
+      type: franka_fr3_arm_controllers/JointImpedanceController
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+    # The bridge consumes JointState; no full Franka robot-state publisher is needed.
+
+/joint_impedance_controller:
+  ros__parameters:
+    # PI05 already predicts the physical FR3 absolute joint angles in radians.
+    relative_start: false
+    command_topic: /pi05/absolute_joint_targets
+    k_alpha: 0.1
+    k_gains: [120.0, 120.0, 120.0, 100.0, 60.0, 40.0, 20.0]
+    d_gains: [18.0, 18.0, 18.0, 14.0, 10.0, 8.0, 5.0]

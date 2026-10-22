@@ -1,0 +1,28 @@
+name: pi05-fr3-gello
+services:
+  ros2:
+    image: pi05-fr3-gello:humble
+    container_name: ${PI05_CONTAINER:-pi05-fr3-gello-ros2-1}
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    network_mode: host
+    privileged: true
+    cap_add: [SYS_NICE, IPC_LOCK]
+    ulimits:
+      rtprio: 99
+      memlock: -1
+      nofile: 65536
+    environment:
+      ROS_DOMAIN_ID: ${ROS_DOMAIN_ID:-0}
+      ROS_LOCALHOST_ONLY: "1"
+    volumes:
+      - ../ros2_ws:/workspace/ros2
+      - ..:/workspace/repo
+      - ../configs:/workspace/configs
+      - /dev:/dev
+      - /run/udev:/run/udev:ro
+    working_dir: /workspace/ros2
+    command: ["sleep", "infinity"]
+    init: true
+    restart: "no"

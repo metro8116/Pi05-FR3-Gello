@@ -1,0 +1,47 @@
+{
+  "status": "saved",
+  "directory": "/home/zezhi/桌面/Pi05-FR3-Gello/deploy/recordings/20261022_155120_effebe48-177c-4bf9-b394-cbbf5fb0d370_e38d0c5b",
+  "error": null,
+  "session_id": "effebe48-177c-4bf9-b394-cbbf5fb0d370",
+  "fps": 30,
+  "frames": {
+    "observation.images.camera_1": 554,
+    "observation.images.camera_2": 554
+  },
+  "dropped": {
+    "observation.images.camera_1": 0,
+    "observation.images.camera_2": 0
+  },
+  "duplicates": {
+    "observation.images.camera_1": 0,
+    "observation.images.camera_2": 0
+  },
+  "unindexed_frames": {
+    "observation.images.camera_1": 0,
+    "observation.images.camera_2": 0
+  },
+  "schema_version": 1,
+  "purpose": "execution_review_video_not_training_data",
+  "started_wall": 1792655480.0681293,
+  "started_monotonic": 1398406.755065824,
+  "stop_requested_wall": 1792655498.5211356,
+  "stop_requested_monotonic": 1398425.208071993,
+  "ended_wall": 1792655498.5571456,
+  "ended_monotonic": 1398425.244081796,
+  "stop_reason": "用户点击停止",
+  "camera_serials": {
+    "observation.images.camera_1": "233522074047",
+    "observation.images.camera_2": "405622074065"
+  },
+  "width": 640,
+  "height": 480,
+  "pixel_format": "rgb24",
+  "codec": "h264",
+  "frame_timing": "one encoded frame per accepted capture; no duplication or resampling; nominal video FPS",
+  "frame_count_semantics": "frames counts complete raw frames delivered to encoder; unindexed_frames counts delivered frames whose timestamp journal write failed; such recordings are errors",
+  "files": {
+    "observation.images.camera_1": "camera_1.mp4",
+    "observation.images.camera_2": "camera_2.mp4"
+  },
+  "frame_metadata": "frames.jsonl"
+}

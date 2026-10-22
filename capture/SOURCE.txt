@@ -1,0 +1,22 @@
+Capture source provenance
+
+video_action_recorder.py, remote_data_bridge.py, start_local_ros2_gello_fr3.sh,
+refresh_gello_serial.sh, and the session-stop algorithm originate from the local
+data-collection project, upstream git@github.com:renshaojie233/data-collection.git.
+Original locations: local/take_data/take_video_action/,
+local/take_data/take_action/scripts/remote_data_bridge.py, and scripts/.
+That project's root did not contain a LICENSE/COPYING/NOTICE at migration time.
+This file records provenance; it does not grant a new license or relicense that
+code. Clarify the owner's redistribution terms before public publication.
+
+Migration changes: repository-relative paths, separate capture output and UI
+state, explicit Move configuration, manual robot activation, no automatic pip or
+Docker build, configurable device/IP/cameras, no legacy SSH/motion replay, and
+exact owner/session process cleanup instead of global process-name killing.
+The original capture alignment, measured state/accepted action, JSON/HDF5 and
+camera-thread shutdown paths are retained.
+
+ROS sources are in ros2_ws/src/ with their original LICENSE/NOTICE files. The
+GELLO publisher remains MIT; arm controllers and gripper manager remain
+Apache-2.0. Their component notices take precedence over any repository-level
+license statement. Local changes are marked in modified source files/notices.
