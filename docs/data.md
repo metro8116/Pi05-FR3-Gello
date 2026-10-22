@@ -2,7 +2,7 @@
 
 English · [简体中文](data_zh.md)
 
-The default paths are `data/raw/record_NNN` → `data/lerobot/fr3_avocado_v30`. Both directories are ignored by Git; actual demonstration data is not included in the repository. Camera recordings, JSON, HDF5, timestamps, and metadata together form one recording. A subset of those files is not sufficient for conversion.
+The examples below use `data/raw/avocado_batch01/record_NNN` → `data/lerobot/fr3_avocado_v30`. Git includes one complete raw example, `data/raw/avocado_batch01/record_001/`; full data batches and converted datasets are prepared separately and excluded by the default ignore rules. See [bundled examples](../examples/README.md) for a single-episode conversion into a separate output directory, or download the [full LeRobot v3.0 dataset](https://huggingface.co/datasets/Metroooooooo/fr3-gello-avocado-v30) for training. Camera recordings, JSON, HDF5, timestamps, and metadata together form one recording. A subset of those files is not sufficient for conversion.
 
 ## Fixed interface
 
@@ -32,18 +32,18 @@ Leading and trailing nearly stationary frames may be trimmed **after manual revi
 ## Read-only validation
 
 ```bash
-./run.sh validate --input-dir ./data/raw \
+./run.sh validate --input-dir ./data/raw/avocado_batch01 \
   --report ./runs/raw_validation.json
 ```
 
-The entry point automatically adds `--dry-run`. Validation checks the schema, JSON/HDF5 consistency, eight-dimensional data, completeness/task/labels, source-data freshness, consistent contents for the same command identity, camera ordering, video frame counts, exposure/receive times, FPS, and frame gaps. Missing dependencies cause a failure; “Selected 0” must not be treated as a successful check.
+`--input-dir` must directly contain the `record_*` directories. Replace the batch path when using your own recordings. The entry point automatically adds `--dry-run`. Validation checks the schema, JSON/HDF5 consistency, eight-dimensional data, completeness/task/labels, source-data freshness, consistent contents for the same command identity, camera ordering, video frame counts, exposure/receive times, FPS, and frame gaps. Missing dependencies cause a failure; “Selected 0” must not be treated as a successful check.
 
 By default, only recordings with `status=complete`, `outcome=success`, and a matching interface are selected. Invalid segments are not silently repaired and included. The result must contain a nonempty selected set and a positive frame count. Read the report's skipped/invalid reasons before deciding whether to exclude or re-record an episode.
 
 ## Export
 
 ```bash
-./run.sh convert --input-dir ./data/raw \
+./run.sh convert --input-dir ./data/raw/avocado_batch01 \
   --repo-id local/fr3_avocado_pi05 \
   --output-dir ./data/lerobot/fr3_avocado_v30
 ```

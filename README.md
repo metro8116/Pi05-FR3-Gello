@@ -61,11 +61,11 @@ Pi05-FR3-Gello/
 ├── configs/                        # Robot PC and cloud GPU configuration templates
 ├── docs/                           # Setup, collection, data, training, and deployment guides
 ├── tests/                          # Hardware-free regression and synthetic data tests
-├── data/                           # Raw recordings and v3.0 datasets, created at runtime
+├── data/                           # Bundled raw example and separately prepared recording/dataset batches
 └── outputs/, runs/, runtime/        # Training outputs, logs, and session state
 ```
 
-Datasets, weights, virtual environments, videos, and private configuration are ignored by Git and transferred separately. Deployment logs go to `deploy/logs/`; execution videos go to `deploy/recordings/`.
+Git includes one raw demonstration at `data/raw/avocado_batch01/record_001/` and one two-camera deployment recording. See [bundled examples and conversion commands](examples/README.md) for their paths and contents. Full datasets, weights, virtual environments, private configuration, and newly generated recordings are excluded by the default ignore rules and prepared separately. Deployment logs go to `deploy/logs/`; execution videos go to `deploy/recordings/`.
 
 </details>
 
@@ -338,6 +338,8 @@ outputs/fr3_avocado_pi05/checkpoints/008000/
 | LeRobot v3.0 robot demonstration dataset | [Dataset](https://huggingface.co/datasets/Metroooooooo/fr3-gello-avocado-v30) |
 | π0.5 fine-tuned 12k checkpoint | [Model](https://huggingface.co/Metroooooooo/pi05-fr3-gello-avocado-12k) |
 | Raw teleoperation recordings | [Raw Dataset](https://huggingface.co/datasets/Metroooooooo/fr3-gello-avocado-raw) |
+
+The links above host the full datasets and the 12k model. The two examples included in Git are for inspecting the recording formats and checking conversion; the deployment recording is separate from training demonstrations.
 
 <a id="deployment"></a>
 

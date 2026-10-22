@@ -4,7 +4,7 @@
 
 本仓库调用 **LeRobot 0.6.1 官方训练器**。数据采样、Accelerate、优化器、学习率调度、checkpoint 保存及恢复仍由官方实现负责；项目只适配 FR3 数据契约、官方 processor 和严格权重加载。
 
-仓库只包含代码、配置与测试，**没有附带原始采集、清洗后的数据集、`pi05_base` 权重或训练 checkpoint**。这些资产需单独准备，也可以直接引用现有路径。本教程中的训练命令由操作者主动执行；整理仓库、环境检查与 `--dry-run` 不会开始训练。
+仓库包含代码、配置、测试、**一条原始示范和一段双相机部署录像**，详见 [内置样例](../examples/README_zh.md)。完整清洗后的 LeRobot 数据集、`pi05_base` 权重与训练 checkpoint 需单独准备，也可以直接引用现有路径。正式任务训练使用 [完整 LeRobot v3.0 数据集](https://huggingface.co/datasets/Metroooooooo/fr3-gello-avocado-v30)；单条原始样例用于格式和转换检查，部署录像不属于示范训练数据。本教程中的训练命令由操作者主动执行；整理仓库、环境检查与 `--dry-run` 不会开始训练。
 
 以下命令从本仓库根目录运行。新布局使用 `data/lerobot/fr3_avocado_v30`，输出放在 `outputs/`。采集与转换参见 [依赖与转换说明](../requirements/README_zh.md)，模型训练好后的部署参见 [部署说明](deployment_zh.md)。
 
@@ -69,7 +69,7 @@ rsync -a --progress -e 'ssh -p YOUR_SSH_PORT' \
   root@YOUR_AUTODL_HOST:/root/autodl-tmp/Pi05-FR3-Gello/data/lerobot/fr3_avocado_v30/
 ```
 
-先确认第一条 SSH 检查成功，再执行上传；中断后只继续向本次新目标传输同一批数据。原数据与模型均不应提交到 Git。若数据已经在 AutoDL 上，例如旧工程的 `data/fr3_avocado_v30`，可以直接把该绝对路径传给 `--dataset`，不必复制。
+先确认第一条 SSH 检查成功，再执行上传；中断后只继续向本次新目标传输同一批数据。完整数据集、新采集批次和模型权重在 Git 之外单独保存；仓库内置的两份样例是明确跟踪的例外。若数据已经在云GPU服务器，例如旧工程的 `data/fr3_avocado_v30`，可以直接把该绝对路径传给 `--dataset`，不必复制。
 
 本任务的接口固定为：
 

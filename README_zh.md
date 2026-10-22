@@ -61,11 +61,11 @@ Pi05-FR3-Gello/
 ├── configs/                        # 本机、云GPU环境配置模板
 ├── docs/                           # 从零配置、数据、训练和部署教程
 ├── tests/                          # 无硬件回归与合成数据测试
-├── data/                           # 原始记录与 v3.0 数据集，运行时生成
+├── data/                           # 内置原始样例，以及单独准备的采集批次与 v3.0 数据集
 └── outputs/、runs/、runtime/        # 训练输出、日志及会话状态
 ```
 
-实际数据、模型权重、虚拟环境、录像与私有配置均被 Git 忽略，单独保存和传输。部署日志位于 `deploy/logs/`，推理过程录像位于 `deploy/recordings/`。
+Git 已包含 `data/raw/avocado_batch01/record_001/` 一条原始示范和一段双相机部署录像，具体路径、内容与转换命令见 [内置样例说明](examples/README_zh.md)。完整数据集、模型权重、虚拟环境、私有配置及后续新生成的录像由默认忽略规则排除，单独准备。部署日志位于 `deploy/logs/`，推理过程录像位于 `deploy/recordings/`。
 
 </details>
 
@@ -338,6 +338,8 @@ outputs/fr3_avocado_pi05/checkpoints/008000/
 | LeRobot v3.0 真机数据集 | [Dataset](https://huggingface.co/datasets/Metroooooooo/fr3-gello-avocado-v30) |
 | π0.5 微调 12k checkpoint | [Model](https://huggingface.co/Metroooooooo/pi05-fr3-gello-avocado-12k) |
 | 原始遥操作数据集 | [Raw Dataset](https://huggingface.co/datasets/Metroooooooo/fr3-gello-avocado-raw) |
+
+上表链接提供完整数据集和 12k 模型。Git 内置的两份样例用于查看记录格式与检查转换流程；部署录像与训练示范数据分开保存。
 
 <a id="deployment"></a>
 

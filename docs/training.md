@@ -4,7 +4,7 @@ English · [简体中文](training_zh.md)
 
 This repository calls the **official LeRobot 0.6.1 trainer**. The official implementation continues to handle data sampling, Accelerate, the optimizer, the learning-rate schedule, and checkpoint saving and recovery. This project adapts only the FR3 data contract, official processors, and strict weight loading.
 
-The repository contains code, configuration, and tests. It **does not include raw demonstrations, a cleaned dataset, `pi05_base` weights, or training checkpoints**. Prepare these assets separately or reference their existing paths. The training commands in this guide run only when the operator explicitly executes them; organizing the repository, checking the environment, and using `--dry-run` do not start training.
+The repository contains code, configuration, tests, **one raw demonstration, and one two-camera deployment recording**; see [bundled examples](../examples/README.md). The complete cleaned LeRobot dataset, `pi05_base` weights, and training checkpoints are prepared separately or referenced at their existing paths. Use the [full LeRobot v3.0 dataset](https://huggingface.co/datasets/Metroooooooo/fr3-gello-avocado-v30) for task training; the single raw example supports format and conversion checks, while deployment video is not demonstration training data. The training commands in this guide run only when the operator explicitly executes them; organizing the repository, checking the environment, and using `--dry-run` do not start training.
 
 Run the following commands from the repository root. The new layout uses `data/lerobot/fr3_avocado_v30` for the dataset and `outputs/` for training output. See the [dependency and conversion guide](../requirements/README.md) for collection and conversion, and the [deployment guide](deployment.md) for using a trained model.
 
@@ -69,7 +69,7 @@ rsync -a --progress -e 'ssh -p YOUR_SSH_PORT' \
   root@YOUR_CLOUD_GPU_HOST:/root/autodl-tmp/Pi05-FR3-Gello/data/lerobot/fr3_avocado_v30/
 ```
 
-Confirm that the first SSH check succeeds before uploading. After an interrupted transfer, resume only the same batch into this newly created destination. Neither original data nor models should be committed to Git. If the dataset is already on the cloud GPU server, for example in the previous project's `data/fr3_avocado_v30`, pass that absolute path to `--dataset` directly instead of copying it.
+Confirm that the first SSH check succeeds before uploading. After an interrupted transfer, resume only the same batch into this newly created destination. Keep full datasets, new collection batches, and model weights outside Git; the two bundled examples are explicitly tracked exceptions. If the dataset is already on the cloud GPU server, for example in the previous project's `data/fr3_avocado_v30`, pass that absolute path to `--dataset` directly instead of copying it.
 
 The task uses the following fixed interface:
 

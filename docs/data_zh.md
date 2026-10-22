@@ -2,7 +2,7 @@
 
 [English](data.md) · 简体中文
 
-默认路径是 `data/raw/record_NNN` → `data/lerobot/fr3_avocado_v30`。这两个目录均被 Git 忽略；仓库不附带实际采集数据。相机录像、JSON、HDF5、timestamp 与 metadata 是一整条记录，不能只拿出一部分转换。
+下文示例使用 `data/raw/avocado_batch01/record_NNN` → `data/lerobot/fr3_avocado_v30`。Git 已包含 `data/raw/avocado_batch01/record_001/` 一条完整原始样例；完整采集批次与转换后的数据集单独准备，由默认忽略规则排除。单条样例转换到独立输出目录的步骤见 [内置样例](../examples/README_zh.md)，正式训练可下载 [完整 LeRobot v3.0 数据集](https://huggingface.co/datasets/Metroooooooo/fr3-gello-avocado-v30)。相机录像、JSON、HDF5、timestamp 与 metadata 是一整条记录，不能只拿出一部分转换。
 
 ## 固定接口
 
@@ -32,18 +32,18 @@
 ## 只读校验
 
 ```bash
-./run.sh validate --input-dir ./data/raw \
+./run.sh validate --input-dir ./data/raw/avocado_batch01 \
   --report ./runs/raw_validation.json
 ```
 
-`--dry-run` 在入口中自动添加：校验 schema、JSON/HDF5 一致性、8 维数据、完整性/任务/标签、源时间新鲜度、同一命令身份的内容一致性、相机顺序、视频帧数、曝光/接收时间、FPS 与帧间隙。依赖缺失会直接失败，不能将 “Selected 0” 当成通过。
+`--input-dir` 必须直接包含 `record_*` 目录；使用自己的数据时替换批次路径。`--dry-run` 在入口中自动添加：校验 schema、JSON/HDF5 一致性、8 维数据、完整性/任务/标签、源时间新鲜度、同一命令身份的内容一致性、相机顺序、视频帧数、曝光/接收时间、FPS 与帧间隙。依赖缺失会直接失败，不能将 “Selected 0” 当成通过。
 
 默认只选 `status=complete`、`outcome=success`、满足接口的记录。错误段不会被静默修复后混入。输出应有非空 selected 和正数帧数；查看 report 里的 skipped/invalid 原因，再决定是否排除或重采。
 
 ## 导出
 
 ```bash
-./run.sh convert --input-dir ./data/raw \
+./run.sh convert --input-dir ./data/raw/avocado_batch01 \
   --repo-id local/fr3_avocado_pi05 \
   --output-dir ./data/lerobot/fr3_avocado_v30
 ```
