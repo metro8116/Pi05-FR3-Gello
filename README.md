@@ -20,6 +20,10 @@ A complete workflow for **GELLO, a Franka FR3 arm with a parallel gripper, and t
 
 > **Put the avocado in the basket.**
 
+![Workflow overview at 2× speed](media/overview.gif)
+
+*Workflow overview (2× playback).*
+
 The robot PC handles cameras, user interfaces, and ROS2 real-time control. A cloud GPU server handles π0.5 training and inference. **Use the same repository on both machines, with different commands for each role.**
 
 - **Demonstration collection:** GELLO teleoperation, two camera previews, joint plots, episode recording, and outcome labels.
@@ -60,6 +64,7 @@ Pi05-FR3-Gello/
 ├── requirements/                   # robot / converter / ml profiles and dependency locks
 ├── configs/                        # Robot PC and cloud GPU configuration templates
 ├── docs/                           # Setup, collection, data, training, and deployment guides
+├── media/                          # README animations and training loss curve
 ├── tests/                          # Hardware-free regression and synthetic data tests
 ├── data/                           # Bundled raw example and separately prepared recording/dataset batches
 └── outputs/, runs/, runtime/        # Training outputs, logs, and session state
@@ -160,6 +165,10 @@ Training and inference load local assets offline. When reusing an environment, u
 <a id="collection"></a>
 
 ## 🎮 Collect demonstrations
+
+![Demonstration collection at 2× speed](media/collect_demonstrations.gif)
+
+*Teleoperation and demonstration collection (2× playback).*
 
 On the robot PC, run from the repository root. The examples below consistently use the batch directory `avocado_batch01`:
 
@@ -310,6 +319,10 @@ The base model comes from `PI05_BASE_MODEL` in `configs/autodl.env`; override it
 
 The example explicitly enables W&B; it is disabled by default. Use `--wandb false` when logging is unnecessary. A fresh training run requires a new output directory.
 
+![π0.5 training loss curve](media/train_loss.svg)
+
+*π0.5 training loss.*
+
 ### Resume training
 
 ```bash
@@ -346,6 +359,10 @@ The links above host the full datasets and the 12k model. The two examples inclu
 ## 🚀 Deploy π0.5
 
 The **cloud server runs inference and the robot PC executes actions**. The cloud GPU loads the fine-tuned model, while the robot PC sends both camera images and measured state, receives absolute joint targets and gripper width, and executes them through local ROS2. GELLO supplies collection demonstrations; deployment uses the cameras and FR3 control stack.
+
+![π0.5 deployment walkthrough at 2× speed](media/deploy_pi05.gif)
+
+*π0.5 deployment walkthrough (2× playback).*
 
 ### 1. Cloud GPU: start the inference service
 
@@ -436,6 +453,12 @@ deploy/recordings/<time>_<session>_<unique-id>/
 ```
 
 Recordings include both real RGB videos, frame timestamps, frame and drop counts, and the stop reason. Set `PI05_RECORDING_DIR` in `configs/local.env` to change the destination. These recordings support deployment review and are stored separately from training demonstrations.
+
+Example execution recordings from both cameras (2× playback):
+
+| Camera 1 | Camera 2 |
+| --- | --- |
+| ![Camera 1 execution recording at 2× speed](media/camera_1.gif) | ![Camera 2 execution recording at 2× speed](media/camera_2.gif) |
 
 [SSH, GUI, gripper handoff, recording, and troubleshooting →](docs/deployment.md)
 
