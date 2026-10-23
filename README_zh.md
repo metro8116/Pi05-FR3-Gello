@@ -20,9 +20,11 @@
 
 > **Put the avocado in the basket.**
 
-![项目演示（二倍速）](media/overview.gif)
-
-*项目演示（2 倍速）。*
+<p align="center">
+  <img src="media/overview.gif" alt="项目演示（二倍速）">
+  <br>
+  <em>项目演示（2 倍速）。</em>
+</p>
 
 机器人电脑负责双相机采集、交互界面与 ROS2 实时控制；云GPU服务器负责 π0.5 微调和推理。**两台机器使用同一个代码仓库，按角色运行不同入口。**
 
@@ -166,9 +168,11 @@ export PI05_TOKENIZER="$PI05_REPO_ROOT/models/paligemma-tokenizer"
 
 ## 🎮 遥操作收集数据
 
-![遥操作示范采集过程（二倍速）](media/collect_demonstrations.gif)
-
-*遥操作示范采集过程（2 倍速）。*
+<p align="center">
+  <img src="media/collect_demonstrations.gif" alt="遥操作示范采集过程（二倍速）">
+  <br>
+  <em>遥操作示范采集过程（2 倍速）。</em>
+</p>
 
 在机器人电脑的项目根目录执行，以下流程统一使用批次目录 `avocado_batch01`：
 
@@ -319,9 +323,11 @@ data/lerobot/fr3_avocado_v30/
 
 示例显式启用了 W&B，命令默认值为关闭；无需日志服务时传 `--wandb false`。新训练使用尚不存在的输出目录。
 
-![π0.5 训练损失曲线](media/train_loss.svg)
-
-*π0.5 训练损失曲线。*
+<p align="center">
+  <img src="media/train_loss.svg" alt="π0.5 训练损失曲线">
+  <br>
+  <em>π0.5 训练损失曲线。</em>
+</p>
 
 ### 断点续训
 
@@ -360,9 +366,11 @@ outputs/fr3_avocado_pi05/checkpoints/008000/
 
 采用**云端推理、本机执行**：云GPU服务器加载微调模型，本机上传双相机图像和实际状态，接收绝对关节目标与夹爪宽度，再由本机 ROS2 执行。GELLO 用于采集示范，模型部署阶段使用相机和 FR3 控制链路。
 
-![π0.5 部署过程（二倍速）](media/deploy_pi05.gif)
-
-*π0.5 部署过程（2 倍速）。*
+<p align="center">
+  <img src="media/deploy_pi05.gif" alt="π0.5 部署过程（二倍速）">
+  <br>
+  <em>π0.5 部署过程（2 倍速）。</em>
+</p>
 
 ### 1. 云GPU：启动推理服务
 
@@ -456,9 +464,16 @@ deploy/recordings/<时间>_<执行会话>_<唯一标识>/
 
 双相机执行录像示例（2 倍速）：
 
-| 相机 1 | 相机 2 |
-| --- | --- |
-| ![相机 1 执行录像（二倍速）](media/camera_1.gif) | ![相机 2 执行录像（二倍速）](media/camera_2.gif) |
+<table align="center">
+  <tr>
+    <th align="center">相机 1</th>
+    <th align="center">相机 2</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="media/camera_1.gif" alt="相机 1 执行录像（二倍速）" width="400"></td>
+    <td align="center"><img src="media/camera_2.gif" alt="相机 2 执行录像（二倍速）" width="400"></td>
+  </tr>
+</table>
 
 [SSH、GUI、夹爪交接、录像与故障排查 →](docs/deployment_zh.md)
 
